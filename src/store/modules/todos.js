@@ -43,9 +43,9 @@ const actions = {
   },
 
   async updateTodo({ commit }, updatedTodo) {
-    const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${updatedTodo.id}`);
+    const response = await axios.put(`https://jsonplaceholder.typicode.com/todos/${updatedTodo.id}`, updatedTodo);
 
-    commit('updateTodo', updatedTodo);
+    commit('updateTodo', response.data);
   }
 };
 
