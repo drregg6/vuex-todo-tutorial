@@ -30,6 +30,16 @@ const actions = {
     await axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
 
     commit('removeTodo', id);
+  },
+
+  async filterTodos({ commit }, event) {
+    // Get the limit
+    const limit = parseInt(event.target.options[event.target.options.selectedIndex].innerText);
+    
+    // Request
+    const response = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+
+    commit('setTodos', response.data);
   }
 };
 
